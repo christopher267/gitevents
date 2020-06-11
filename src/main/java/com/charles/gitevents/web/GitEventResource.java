@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.charles.gitevents.api.GitEventSearchCriteriaVO;
+import com.charles.gitevents.api.exception.GitEventsException;
 import com.charles.gitevents.core.IGitEventService;
 import com.charles.gitevents.remote.api.GitEventRO;
 
@@ -25,7 +26,7 @@ public class GitEventResource {
             method = RequestMethod.GET,
             produces = {MediaType.APPLICATION_JSON_VALUE})
 	@PermitAll
-	public List<GitEventRO> getGitEvent(GitEventSearchCriteriaVO criteria) {
+	public List<GitEventRO> getGitEvent(GitEventSearchCriteriaVO criteria) throws GitEventsException {
  		return service.findEvents(criteria);
 	}
 }
